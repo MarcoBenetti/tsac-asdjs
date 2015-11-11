@@ -144,13 +144,15 @@ function f5r(a,b)
 function f6(a,b)
 {
     var tot = 0;
-    for(i=0; tot<a; i++)
+    for(i = 0; tot < a ; i++)
     {
         tot+=b;
     }
-    lol = [i,a-tot];
+    lol = [i-1,a-tot+b];
     return lol;
 }
+
+console.log(ex_6_I(5,2));
 
 //Esercizio 6 ricorsivo
 
@@ -220,3 +222,4 @@ function ex_7_I(x,y){
 function ex_7_R(x,y){
     return f7r(x,y);
 }
+
