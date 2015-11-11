@@ -152,8 +152,6 @@ function f6(a,b)
     return lol;
 }
 
-console.log(ex_6_I(5,2));
-
 //Esercizio 6 ricorsivo
 
 //wtf?!
