@@ -1,4 +1,5 @@
 /*
+Caricato con WS
 Esercizio 1
 Dato un array di interi, restituire la loro somma fino a che non viene ritrovato un valore negativo
 */
