@@ -224,7 +224,23 @@ function ex_9_I(x)
 
 //Esercizio 9 ricorsivo
 
-//??????
+function ex_9_R(arr)
+{
+    var newArr = [];
+    function bodyF(arr, newArr)
+    {
+        if(arr.length == 0) {
+            return 0;
+        } else {
+            newArr.push(arr[arr.length-1]);
+            arr.slice(0, arr.length-2);
+            return bodyF(arr, newArr);
+        }
+    }
+    return newArr;
+}
+
+    console.log(ex_9_R([1,2,3,4]))
 
 //Esercizio 10 iterativo (N elementi M)
 
@@ -238,6 +254,45 @@ function arrayFillerI (n, m)
     return arr;
 }
 
+//Esercizio 10 ricorsivo
+
+function arrayFillerR(n, m)
+{
+    var arr = [];
+    if(n == 1)
+    {
+        arr.push(m);
+        return arr;
+    } else {
+        return arrayFillerR(n-1, m)
+    }
+}
+
+console.log(arrayFillerR(3,3));
+
+//Esercizio 11 iterativo -> ordina un array ocn prima dispari e poi pari
+
+function arrayOrder(arr)
+{
+    var newArr = [];
+    for(var i = 0; i < arr.length; i++)
+    {
+        if(arr[i] % 2 != 0)
+        {
+            newArr.push(arr[i]);
+        }
+    }
+    for(var i = 0; i < arr.length; i++)
+    {
+        if(arr[i] % 2 == 0)
+        {
+            newArr.push(arr[i]);
+        }
+    }
+    return newArr;
+}
+
+console.log(arrayOrder([1,2,3,4,5,6,7,8]));
 
 // Per Tiziano.
 function ex_2_I(x) {
