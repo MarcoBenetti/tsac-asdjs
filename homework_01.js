@@ -80,10 +80,17 @@ function f3(arr) //aggiungere controllo 10 elementi se necessario
 
 function f3r(arr)
 {
-    if(arr.length == 0)
-        return 0;
-    else
-        return arr[0]/10 + f3r(arr.slice(1));
+    function sumArr(arr)
+    { 
+        if(arr.length == 0)
+        {
+            return 0;
+        } else {
+            return arr[0] + sumArr(arr.slice(1));
+        }
+    }
+
+    return sumArr(arr) / arr.length;
 }
 
 //Esercizio 4 iterativo
@@ -154,7 +161,15 @@ function f6(a,b)
 
 //Esercizio 6 ricorsivo
 
-//wtf?!
+function f6r(a, b){
+    if(a < b)
+    {
+        return [0, a];
+    } else {
+        var result = f6r(a - b, b);
+        return [result[0]+ 1, result[1]];
+    }
+}
 
 //Esercizio 7 iterativo
 
@@ -175,6 +190,53 @@ function f7r(a,b)
     else
         return a * f7r(a,b-1);//return f5r(a, f7r(a,b-1));
 }
+
+//Esercizio 8 iterativo: la matrice cristoddio
+
+function ex_8_I(myarray)
+{
+    var m = [];
+    var n = Math.sqrt(myarray.length);
+    for(var row = 0; row < n; row++)
+    {
+        m[row] = myarray.slice(row * n, (row+1) * n )
+    }
+}
+
+//Esercizio 8 ricorsivo
+
+
+
+
+//Esercizio 9 iterativo -> reverse array
+function ex_9_I(x)
+{
+    var rt = [];
+    var j = 0;
+    for(var i = x.length -1; i >= 0; i--)
+    {
+        rt[j] = x[i];
+        j++;
+    }
+    return rt;
+}
+
+//Esercizio 9 ricorsivo
+
+//??????
+
+//Esercizio 10 iterativo (N elementi M)
+
+function arrayFillerI (n, m)
+{
+    var arr = [];
+    for(var i = 0; i < m; i++)
+    {
+        arr.push(n);
+    }
+    return arr;
+}
+
 
 // Per Tiziano.
 function ex_2_I(x) {
@@ -219,5 +281,9 @@ function ex_7_I(x,y){
 
 function ex_7_R(x,y){
     return f7r(x,y);
+}
+
+function ex_10_I(a,b){
+    return arrayFillerI(a,b);
 }
 
