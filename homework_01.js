@@ -259,8 +259,7 @@ function arrayFillerI (n, m)
 function arrayFillerR(n, m)
 {
     var arr = [];
-    if(n == 1)
-    {
+    if(n == 1) {
         arr.push(m);
         return arr;
     } else {
@@ -292,7 +291,6 @@ function arrayOrder(arr)
     return newArr;
 }
 
-console.log(arrayOrder([1,2,3,4,5,6,7,8]));
 
 // Per Tiziano.
 function ex_2_I(x) {
@@ -341,5 +339,9 @@ function ex_7_R(x,y){
 
 function ex_10_I(a,b){
     return arrayFillerI(a,b);
+}
+
+function ex_11_I(x) {
+    return arrayOrder(x);
 }
 
