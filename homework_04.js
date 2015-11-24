@@ -25,46 +25,34 @@ Stack.prototype.isEmpty = function() {
     }
 }
 
-
 function rpn(str){
-    var arr = [];
+    var expArray = [];
     var stN = new Stack();
-    var stO = new Stack();
-    arr = str.split(" ");
+    var tmp1 = 0;
+    var tmp2 = 0;
+    expArray = str.split("");
 
-    for(var i = 0; i < arr.length; i++)
-    {
-        if(arr[i] == "+"||arr[i] == "-" || arr[i] == "*" || arr[i] == "/")
+    expArray.forEach(function (e){
+        switch(e)
         {
-            stO.push(arr[i]);
-        } else {
-            stN.push(parseInt(arr[i]));
-            console.log()
+            case "+": tmp2 = stN.pop();
+                tmp1 = stN.pop();
+                stN.push(tmp1 + tmp2);
+                break;
+            case "-": tmp2 = stN.pop();
+                tmp1 = stN.pop();
+                stN.push(tmp1 - tmp2);
+                break;
+            case "*": tmp2 = stN.pop();
+                tmp1 = stN.pop();
+                stN.push(tmp1 * tmp2);
+                break;
+            case "/": tmp2 = stN.pop();
+                tmp1 = stN.pop();
+                stN.push(tmp1 / tmp2);
+                break;
+            default: stN.push(parseInt(e));
         }
-    }
-
-    stN.myarray.reverse();
-    stO.myarray.reverse();
-
-    while(!stO.isEmpty())
-    {
-        var tmp1 = stN.pop();
-        var tmp2 = stN.pop();
-        var op = stO.pop();
-        var ris = 0;
-        switch(op)
-        {
-            case "+": ris = tmp1 + tmp2;
-                break;
-            case "-": ris = tmp2 - tmp1;
-                break;
-            case "*": ris = tmp1 * tmp2;
-                break;
-            case "/": ris = tmp2 / tmp1;
-                break;
-        }
-        stN.push(ris);
-    }
-
-    return parseFloat(stN.pop());
+    });
+    return stN.peek();
 }
