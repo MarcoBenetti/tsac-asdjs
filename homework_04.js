@@ -1,3 +1,6 @@
+/**
+ * Created by Marco on 24/11/2015.
+ */
 function Stack() {
     this.myarray = [];
 }
@@ -22,28 +25,12 @@ Stack.prototype.isEmpty = function() {
     }
 }
 
-function dec2bin(n){
-    var st = new Stack();
-    var retStr = "";
-    while (n != 0){
-        st.push(n%2);
-        n = Math.floor(n / 2);
-    }
-
-    while(!st.isEmpty()) {
-        retStr += st.pop().toString();
-    }
-
-    return retStr;
-}
-
-/*RPN*/
 
 function rpn(str){
     var arr = [];
     var stN = new Stack();
     var stO = new Stack();
-    arr = str.split("");
+    arr = str.split(" ");
 
     for(var i = 0; i < arr.length; i++)
     {
@@ -79,7 +66,5 @@ function rpn(str){
         stN.push(ris);
     }
 
-    return stN.pop();
+    return parseFloat(stN.pop());
 }
-
-document.write(cose("1+2-3+4"));
