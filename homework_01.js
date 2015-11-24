@@ -240,7 +240,6 @@ function ex_9_R(arr)
     return newArr;
 }
 
-    console.log(ex_9_R([1,2,3,4]))
 
 //Esercizio 10 iterativo (N elementi M)
 
@@ -256,18 +255,22 @@ function arrayFillerI (n, m)
 
 //Esercizio 10 ricorsivo
 
-function arrayFillerR(n, m)
+function arrayFillerR(num, cont)
 {
-    var arr = [];
-    if(n == 1) {
-        arr.push(m);
-        return arr;
-    } else {
-        return arrayFillerR(n-1, m)
+    var ret = [];
+    function recall(arr, n, m)
+    {
+        if(n == arr.length)
+        {
+            return arr;
+        } else {
+            arr.push(m);
+            recall(arr, n, m);
+        }
     }
+    recall(ret, num, cont);
+    return ret;
 }
-
-console.log(arrayFillerR(3,3));
 
 //Esercizio 11 iterativo -> ordina un array ocn prima dispari e poi pari
 
@@ -339,6 +342,10 @@ function ex_7_R(x,y){
 
 function ex_10_I(a,b){
     return arrayFillerI(a,b);
+}
+
+function ex_10_R(a,b){
+    return arrayFillerR(a,b);
 }
 
 function ex_11_I(x) {

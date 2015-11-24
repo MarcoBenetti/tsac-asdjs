@@ -1,3 +1,5 @@
+//======================================LIFO======================================
+
 function Stack() {
     this.myarray = [];
 }
@@ -67,4 +69,57 @@ function rpn(str){
     return stN.peek();
 }
 
-document.write(rpn("1+2-3+4"));
+//======================================FIFO======================================
+
+function Queue() {
+    this.queue = [];
+}
+
+Queue.prototype.enqueue = function(e){
+    this.queue.unshift(e);
+}
+
+Queue.prototype.dequeue = function(){
+    return this.queue.pop();
+}
+
+Queue.prototype.front = function(){
+    return this.queue[this.queue.length - 1];
+}
+
+Queue.prototype.size = function(){
+    return this.queue.length;
+}
+
+Queue.prototype.isEmpty = function(){
+    return this.size() == 0;
+}
+
+//implementare una priority queue un cui gli elementi inseriti sono oggetti che contengno elemento e priorità
+//modificando enqueue in modo che butti dentro nel vettore secondo la priorità
+//usare array.splice(indice da modificare, elementi da cancellare [ossia 0], elemento da aggiungere)
+//non ritorna un array, lo modifica direttamente   --->>> su homework_05.js con funzione PriorityQueue
+
+//da modificare con la priorità che diventa un qualsiasi cosa e PriorityQueue accetta un parametro funzione priority che:
+//ritorna  0 se i due parametri sono uguali
+//ritorna -1 se il primo parametro è minore del secondo
+//ritorna  1 se il primo parametro è è magiore del secondo  --->>> homework_05.js con nome PriorityQueueC
+
+function QueueItem(item, priority) {
+    this.item = item;
+    this.priority = priority;
+}
+
+/*homework_05.js implementare coda circolare
+
+    condizioni:
+    - arrivato in fondo al vettore si inserisce in testa per dare circolarità
+    - la dimensione dell'array è fissa
+    - dobbiamo salvare l'indice di dove potrò inserire il prossimo dato e l'indce del prossimo dato da poppare
+    !!! I METODI SONO GLI STESSI DELLA CODA, CAMBIA L'IMPLEMENTAZIONE !!!
+*/
+
+/*
+    Implementare la parte merge, dati 2 array ordinati creare un nuovo array ordinato unendoli
+    -->> nome merge() file homework_06.js
+ */
