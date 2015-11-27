@@ -1,74 +1,6 @@
-//======================================LIFO======================================
-
-function Stack() {
-    this.myarray = [];
-}
-
-Stack.prototype.push = function(e) {
-    this.myarray.push(e);
-}
-
-Stack.prototype.pop = function() {
-    return this.myarray.pop();
-}
-
-Stack.prototype.peek = function() {
-    return this.myarray[this.myarray.length - 1];
-}
-
-Stack.prototype.isEmpty = function() {
-    return this.myarray.length == 0;
-}
-
-function dec2bin(n){
-    var st = new Stack();
-    var retStr = "";
-    while (n != 0){
-        st.push(n%2);
-        n = Math.floor(n / 2);
-    }
-
-    while(!st.isEmpty()) {
-        retStr += st.pop().toString();
-    }
-
-    return retStr;
-}
-
-/*RPN*/
-
-function rpn(str){
-    var expArray = [];
-    var stN = new Stack();
-    var tmp1 = 0;
-    var tmp2 = 0;
-    expArray = str.split("");
-
-    expArray.forEach(function (e){
-        switch(e)
-        {
-            case "+": tmp2 = stN.pop();
-                tmp1 = stN.pop();
-                stN.push(tmp1 + tmp2);
-                break;
-            case "-": tmp2 = stN.pop();
-                tmp1 = stN.pop();
-                stN.push(tmp1 - tmp2);
-                break;
-            case "*": tmp2 = stN.pop();
-                tmp1 = stN.pop();
-                stN.push(tmp1 * tmp2);
-                break;
-            case "/": tmp2 = stN.pop();
-                tmp1 = stN.pop();
-                stN.push(tmp1 / tmp2);
-                break;
-            default: stN.push(parseInt(e));
-        }
-    });
-    return stN.peek();
-}
-
+/**
+ * Created by Marco on 27/11/2015.
+ */
 //======================================FIFO======================================
 
 function Queue() {
@@ -188,12 +120,12 @@ PriorityQueueC.prototype.isEmpty = function(){
 
 /*homework_05.js implementare coda circolare
 
-    condizioni:
-    - arrivato in fondo al vettore si inserisce in testa per dare circolarità
-  +  - la dimensione dell'array è fissa
-  +  - dobbiamo salvare l'indice di dove potrò inserire il prossimo dato e l'indce del prossimo dato da poppare
-    !!! I METODI SONO GLI STESSI DELLA CODA, CAMBIA L'IMPLEMENTAZIONE !!!
-*/
+ condizioni:
+ - arrivato in fondo al vettore si inserisce in testa per dare circolarità
+ +  - la dimensione dell'array è fissa
+ +  - dobbiamo salvare l'indice di dove potrò inserire il prossimo dato e l'indce del prossimo dato da poppare
+ !!! I METODI SONO GLI STESSI DELLA CODA, CAMBIA L'IMPLEMENTAZIONE !!!
+ */
 
 function CircularQueue(lng) {
     this.dimension = lng;
@@ -240,29 +172,3 @@ CircularQueue.prototype.size = function(){
 CircularQueue.prototype.isEmpty = function(){
     return this.enterIndex == this.exitIndex;
 }
-
-/*
-    Implementare la parte merge, dati 2 array ordinati creare un nuovo array ordinato unendoli
-    -->> nome merge() file homework_06.js
- */
-
-function merge(ar1, ar2)
-{
-    var robaToBeReturned = [];
-    var i1 = 0;
-    var i2 = 0;
-
-    while(i1 < ar1.length || i2 < ar2.length)
-    {
-        if(ar1[i1] < ar2[i2]) {
-            robaToBeReturned.push(ar1[i1]);
-            i1++;
-        } else {
-            robaToBeReturned.push(ar2[i2]);
-            i2++;
-        }
-    }
-    return robaToBeReturned;
-}
-
-console.log(merge([1,3,5], [2,4,6]));
