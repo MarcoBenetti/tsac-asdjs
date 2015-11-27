@@ -78,14 +78,14 @@ function QueueItem(item, priority) {
 //da modificare con la priorità che diventa un qualsiasi cosa e PriorityQueue accetta un parametro funzione priority che:
 //ritorna  0 se i due parametri sono uguali
 //ritorna -1 se il primo parametro è minore del secondo
-//ritorna  1 se il primo parametro è è magiore del secondo  --->>> homework_05.js con nome PriorityQueueC
+//ritorna  1 se il primo parametro è è magiore del secondo  --->>> homework_05.js con nome PriorityQueueCallback
 
-function PriorityQueueC(cb) {
+function PriorityQueueCallback(cb) {
     this.queue = [];
     this.callback = cb;
 }
 
-PriorityQueueC.prototype.enqueue = function(e){
+PriorityQueueCallback.prototype.enqueue = function(e){
     var exitCondition = false;
     for(var i = 0; i < this.queue.length && !exitCondition; i++)
     {
@@ -101,19 +101,19 @@ PriorityQueueC.prototype.enqueue = function(e){
     }
 }
 
-PriorityQueueC.prototype.dequeue = function(){
+PriorityQueueCallback.prototype.dequeue = function(){
     return this.queue.pop();
 }
 
-PriorityQueueC.prototype.front = function(){
+PriorityQueueCallback.prototype.front = function(){
     return this.queue[this.queue.length - 1];
 }
 
-PriorityQueueC.prototype.size = function(){
+PriorityQueueCallback.prototype.size = function(){
     return this.queue.length;
 }
 
-PriorityQueueC.prototype.isEmpty = function(){
+PriorityQueueCallback.prototype.isEmpty = function(){
     return this.size() == 0;
 }
 

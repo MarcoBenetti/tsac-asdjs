@@ -28,7 +28,7 @@ function dec2bin(n){
         n = Math.floor(n / 2);
     }
 
-    while(!st.isEmpty()) {
+    while(!st.isEmpty()){
         retStr += st.pop().toString();
     }
 
@@ -106,16 +106,13 @@ function PriorityQueue() {
 
 PriorityQueue.prototype.enqueue = function(e){
     var exitCondition = false;
-    for(var i = 0; i < this.queue.length && !exitCondition; i++)
-    {
-        if(e.priority < this.queue[i].priority)
-        {
+    for(var i = 0; i < this.queue.length && !exitCondition; i++){
+        if(e.priority < this.queue[i].priority) {
             this.queue.splice(i, 0, e);
             exitCondition = true;
         }
     }
-    if(!exitCondition)
-    {
+    if(!exitCondition){
         this.queue.push(e);
     }
 }
@@ -146,25 +143,22 @@ function QueueItem(item, priority) {
 //da modificare con la priorità che diventa un qualsiasi cosa e PriorityQueue accetta un parametro funzione priority che:
 //ritorna  0 se i due parametri sono uguali
 //ritorna -1 se il primo parametro è minore del secondo
-//ritorna  1 se il primo parametro è è magiore del secondo  --->>> homework_05.js con nome PriorityQueueC
+//ritorna  1 se il primo parametro è è magiore del secondo  --->>> homework_05.js con nome PriorityQueueCallback
 
-function PriorityQueueC(cb) {
+function PriorityQueueC(cb){
     this.queue = [];
     this.callback = cb;
 }
 
 PriorityQueueC.prototype.enqueue = function(e){
     var exitCondition = false;
-    for(var i = 0; i < this.queue.length && !exitCondition; i++)
-    {
-        if(this.callback(e.priority, this.queue[i].priority) <=0)
-        {
+    for(var i = 0; i < this.queue.length && !exitCondition; i++){
+        if(this.callback(e.priority, this.queue[i].priority) == -1){
             this.queue.splice(i, 0, e);
             exitCondition = true;
         }
     }
-    if(!exitCondition)
-    {
+    if(!exitCondition){
         this.queue.push(e);
     }
 }
@@ -195,7 +189,7 @@ PriorityQueueC.prototype.isEmpty = function(){
     !!! I METODI SONO GLI STESSI DELLA CODA, CAMBIA L'IMPLEMENTAZIONE !!!
 */
 
-function CircularQueue(lng) {
+function CircularQueue(lng){
     this.dimension = lng;
     this.enterIndex = 0;
     this.exitIndex = 0;
@@ -203,25 +197,21 @@ function CircularQueue(lng) {
 }
 
 CircularQueue.prototype.enqueue = function(e){
-    if(this.queue[this.enterIndex] == undefined)
-    {
+    if(this.queue[this.enterIndex] == undefined){
         this.queue.splice(this.enterIndex, 0, e);
         this.enterIndex++;
     }
-    if(this.enterIndex + 1 > this.dimension)
-    {
+    if(this.enterIndex + 1 > this.dimension){
         this.enterIndex = 0;
     }
 }
 
 CircularQueue.prototype.dequeue = function(){
-    if(this.queue[this.exitIndex] != undefined)
-    {
+    if(this.queue[this.exitIndex] != undefined){
         var ret = this.queue[this.exitIndex];
         this.queue[this.exitIndex] = undefined;
         this.exitIndex ++;
-        if(this.exitIndex + 1 > this.dimension)
-        {
+        if(this.exitIndex + 1 > this.dimension){
             this.enterIndex = 0;
         }
         return ret;
@@ -246,14 +236,12 @@ CircularQueue.prototype.isEmpty = function(){
     -->> nome merge() file homework_06.js
  */
 
-function merge(ar1, ar2)
-{
+function merge(ar1, ar2) {
     var robaToBeReturned = [];
     var i1 = 0;
     var i2 = 0;
 
-    while(i1 < ar1.length || i2 < ar2.length)
-    {
+    while(i1 < ar1.length || i2 < ar2.length){
         if(ar1[i1] < ar2[i2]) {
             robaToBeReturned.push(ar1[i1]);
             i1++;
