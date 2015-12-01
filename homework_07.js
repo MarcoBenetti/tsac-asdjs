@@ -12,7 +12,7 @@ function t(myarray){
         return 5 * myarray[0] + t(myarray.slice(1));
     }
 }
-//complessità O(n)
+//complessità di tempo O(n)
 
 //somma quadrati elementi pari
 function sumSquareEven(myarray){
@@ -26,14 +26,37 @@ function sumSquareEven(myarray){
         }
     }
 }
-//complessità O(n)
+//complessità di tempo O(n)
 
 //somma quadrati degli elementi pari
 function sumSquareEvenF(myarray){
-    return myarray.reduce(function(acc, nextEl){
-        if(nextEl % 2 == 0)
-            return acc + (nextEl * nextEl);
-        else
-            return acc;
-    }, 0);
+    return myarray.filter( x => x % 2 == 0).map(x => x * x).reduce((acc, x) => acc + x, 0);
+}
+
+//complessità di tempo O(n)
+
+function Stack() {
+    this.myarray = [];
+}
+
+Stack.prototype.push = function(e) {
+    this.myarray.push(e);
+}
+
+Stack.prototype.pop = function() {
+    return this.myarray.pop();
+}
+
+Stack.prototype.peek = function() {
+    return this.myarray[this.myarray.length - 1];
+}
+
+Stack.prototype.isEmpty = function() {
+    return this.myarray.length == 0;
+}
+
+//per Tiziano
+
+function ex_1a(myarray) {
+    return t(myarray);
 }

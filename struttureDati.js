@@ -302,7 +302,7 @@ BST.prototype.addNode = function(currentNode, newNode){
 }
 
 BST.prototype.add = function(item){
-    if(root = null)
+    if(this.root == null)
         this.root = new Node(item, null, null);
     else
         this.addNode(this.root, new Node(item, null, null));
@@ -310,7 +310,7 @@ BST.prototype.add = function(item){
 
 function inOrder(tree, callback){
     if( tree != null){
-        inorder(tree.l, callback);
+        inOrder(tree.l, callback);
         callback(tree.item);
         inOrder(tree.r, callback);
     }
@@ -337,12 +337,12 @@ function search(node, item){
         return false;
     }
 
-    if(e == node.item){
+    if(item == node.item){
         return true;
     } else {
-        if (e < node.item){
+        if (item < node.item){
             return search(node.l, e);
-        } else if (e > node.item){
+        } else if (item > node.item){
             return search(node.r, e);
         }
     }
