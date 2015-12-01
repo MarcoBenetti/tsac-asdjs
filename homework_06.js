@@ -7,8 +7,7 @@
  -->> nome merge() file homework_06.js
  */
 
-function merge(ar1, ar2)
-{
+function merge(ar1, ar2) {
     var robaToBeReturned = [];
     var i1 = 0;
     var i2 = 0;
@@ -22,6 +21,12 @@ function merge(ar1, ar2)
             robaToBeReturned.push(ar2[i2]);
             i2++;
         }
+    }
+    if (i1 < ar1.length) {
+        robaToBeReturned = robaToBeReturned.concat(ar1.slice(i1));
+    }
+    if (i2 < ar2.length) {
+        robaToBeReturned = robaToBeReturned.concat(ar2.slice(i2));
     }
     return robaToBeReturned;
 }

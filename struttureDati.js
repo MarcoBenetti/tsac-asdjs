@@ -241,7 +241,8 @@ function merge(ar1, ar2) {
     var i1 = 0;
     var i2 = 0;
 
-    while(i1 < ar1.length || i2 < ar2.length){
+    while(i1 < ar1.length || i2 < ar2.length)
+    {
         if(ar1[i1] < ar2[i2]) {
             robaToBeReturned.push(ar1[i1]);
             i1++;
@@ -250,7 +251,105 @@ function merge(ar1, ar2) {
             i2++;
         }
     }
+    if (i1 < ar1.length) {
+        robaToBeReturned = robaToBeReturned.concat(ar1.slice(i1));
+    }
+    if (i2 < ar2.length) {
+        robaToBeReturned = robaToBeReturned.concat(ar2.slice(i2));
+    }
     return robaToBeReturned;
 }
 
-console.log(merge([1,3,5], [2,4,6]));
+function mergeSort(myarray) {
+
+    if(myarray.length == 1) {
+        return myarray;
+    } else {
+        var l = myarray.length / 2;
+        var left = myarray.slice(0, Math.ceil(l));
+        var right = myarray.slice(Math.ceil(l));
+        return merge(mergeSort(left), mergeSort(right));
+    }
+}
+
+//======================================================ALBERI======================================================
+
+function Node(i, left, right){
+    this.item = i;
+    this.l = left;
+    this.r = right;
+}
+
+function BST(){
+    this.root = null;
+}
+
+BST.prototype.addNode = function(currentNode, newNode){
+
+    if(newNode.item < currentNode.item) {
+        if (currentNode.l == null){
+            currentNode.l = newNode;
+        } else {
+            return this.addNode(currentNode.l, newNode);
+        }
+    } else {
+        if (currentNode.r == null){
+            currentNode.r = newNode;
+        } else {
+            return this.addNode(currentNode.r, newNode);
+        }
+    }
+}
+
+BST.prototype.add = function(item){
+    if(root = null)
+        this.root = new Node(item, null, null);
+    else
+        this.addNode(this.root, new Node(item, null, null));
+}
+
+function inOrder(tree, callback){
+    if( tree != null){
+        inorder(tree.l, callback);
+        callback(tree.item);
+        inOrder(tree.r, callback);
+    }
+}
+
+function preOrder(tree, callback){
+    if( tree != null){
+        callback(tree.item);
+        inorder(tree.l, callback);
+        inOrder(tree.r, callback);
+    }
+}
+
+function postOrder(tree, callback){
+    if( tree != null){
+        inorder(tree.l, callback);
+        inOrder(tree.r, callback);
+        callback(tree.item);
+    }
+}
+
+function search(node, item){
+    if (node == null) {
+        return false;
+    }
+
+    if(e == node.item){
+        return true;
+    } else {
+        if (e < node.item){
+            return search(node.l, e);
+        } else if (e > node.item){
+            return search(node.r, e);
+        }
+    }
+
+}
+
+/*
+
+
+*/
